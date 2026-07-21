@@ -44,6 +44,35 @@
             border-radius: 16px;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
             overflow: hidden;
+            position: relative;
+        }
+
+        /* LANGUAGE SWITCHER */
+        .lang-switch {
+            position: absolute;
+            top: 25px;
+            right: 35px;
+            z-index: 100;
+            display: flex;
+            gap: 8px;
+        }
+
+        .lang-switch button {
+            background: transparent;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            padding: 4px 12px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .lang-switch button.active, .lang-switch button:hover {
+            background: var(--accent);
+            color: #fff;
         }
 
         /* SIDEBAR */
@@ -70,6 +99,7 @@
             outline-offset: 4px;
             margin-bottom: 30px;
             transition: all 0.4s ease;
+            cursor: pointer;
         }
 
         .profile-img:hover {
@@ -287,6 +317,7 @@
             border-radius: 12px;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            cursor: pointer;
         }
 
         .gallery img.cert-img {
@@ -303,28 +334,6 @@
         .gallery img:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            margin-top: 15px;
-            padding: 10px 20px;
-            background: var(--accent);
-            color: #fff;
-            text-decoration: none;
-            border-radius: 6px;
-            font-size: 14px;
-            font-weight: 500;
-            transition: background 0.3s ease;
-        }
-
-        .btn:hover {
-            background: var(--accent-hover);
-        }
-
-        .btn i {
-            margin-right: 8px;
         }
 
         @media (max-width: 992px) {
@@ -346,6 +355,10 @@
                 margin-top: 5px;
                 display: inline-block;
                 width: fit-content;
+            }
+            .lang-switch {
+                top: 15px;
+                right: 15px;
             }
         }
 
@@ -392,65 +405,69 @@
         .close-btn:hover {
             color: var(--accent);
         }
-        .gallery img, .profile-img {
-            cursor: pointer;
-        }
     </style>
 </head>
 <body>
 
     <div class="resume-wrapper">
+        
+        <!-- Language Switcher -->
+        <div class="lang-switch">
+            <button onclick="setLang('vi')" id="btn-vi" class="active">VI</button>
+            <button onclick="setLang('en')" id="btn-en">EN</button>
+        </div>
+
         <!-- SIDEBAR -->
         <aside class="sidebar">
             <div class="profile-container">
                 <img src="nauan.jpg" alt="Trần Thanh Son" class="profile-img">
             </div>
 
-            <h2>Liên Hệ</h2>
+            <h2 data-i18n="contactTitle">Liên Hệ</h2>
             <ul class="contact-list">
                 <li><i class="fa-regular fa-calendar"></i> 06 / 11 / 1966</li>
                 <li><i class="fa-solid fa-phone"></i> 0909 000 383</li>
                 <li><i class="fa-regular fa-envelope"></i> Thanhsontran611@gmail.com</li>
-                <li><i class="fa-solid fa-location-dot"></i> K58/6 Cô Bắc, TP. Đà Nẵng</li>
+                <li><i class="fa-solid fa-location-dot"></i> <span data-i18n="address">K58/6 Cô Bắc, TP. Đà Nẵng</span></li>
             </ul>
 
-            <h2>Kỹ Năng Chuyên Môn</h2>
+            <h2 data-i18n="skillsTitle">Kỹ Năng Chuyên Môn</h2>
             <ul class="skills-list">
-                <li>Giám sát, hướng dẫn sử dụng thiết bị và quy trình an toàn vệ sinh thực phẩm.</li>
-                <li>Đảm bảo thiết bị nhà bếp vận hành đúng tiêu chuẩn.</li>
-                <li><strong>Bếp Âu:</strong> Chuyên các món ăn Ý.</li>
-                <li><strong>Bếp Á:</strong> Ẩm thực Việt Nam và Trung Quốc.</li>
-                <li><strong>Bếp Bánh:</strong> Các loại bánh buffet sáng (đặc biệt Pizza).</li>
-                <li><strong>Bếp Nhật Bản:</strong> Một số món ăn thuần túy.</li>
-                <li><strong>Bếp Pháp:</strong> Ẩm thực cơ bản.</li>
+                <li data-i18n="skill1">Giám sát, hướng dẫn sử dụng thiết bị và quy trình an toàn vệ sinh thực phẩm.</li>
+                <li data-i18n="skill2">Đảm bảo thiết bị nhà bếp vận hành đúng tiêu chuẩn.</li>
+                <li data-i18n="skill3"><strong>Bếp Âu:</strong> Chuyên các món ăn Ý.</li>
+                <li data-i18n="skill4"><strong>Bếp Á:</strong> Ẩm thực Việt Nam và Trung Quốc.</li>
+                <li data-i18n="skill5"><strong>Bếp Bánh:</strong> Các loại bánh buffet sáng (đặc biệt Pizza).</li>
+                <li data-i18n="skill6"><strong>Bếp Nhật Bản:</strong> Một số món ăn thuần túy.</li>
+                <li data-i18n="skill7"><strong>Bếp Pháp:</strong> Ẩm thực cơ bản.</li>
             </ul>
 
-            <h2>Kỹ Năng Cá Nhân</h2>
+            <h2 data-i18n="personalSkillsTitle">Kỹ Năng Cá Nhân</h2>
             <ul class="skills-list">
-                <li>Tổ chức xuất sắc các tiệc Buffet, tiệc ngoài trời, sinh nhật, đám cưới.</li>
-                <li>Luôn mong muốn học hỏi, sáng tạo và làm việc chăm chỉ.</li>
-                <li>Cẩn thận, tỉ mỉ trong khâu chế biến thực phẩm.</li>
+                <li data-i18n="pskill1">Tổ chức xuất sắc các tiệc Buffet, tiệc ngoài trời, sinh nhật, đám cưới.</li>
+                <li data-i18n="pskill2">Luôn mong muốn học hỏi, sáng tạo và làm việc chăm chỉ.</li>
+                <li data-i18n="pskill3">Cẩn thận, tỉ mỉ trong khâu chế biến thực phẩm.</li>
             </ul>
         </aside>
 
         <!-- MAIN CONTENT -->
         <main class="main-content">
             <header class="header">
-                <h1 class="name">Trần Thanh Sơn</h1>
-                <div class="title">Bếp Trưởng Điều Hành</div>
+                <h1 class="name" data-i18n="name">Trần Thanh Sơn</h1>
+                <div class="title" data-i18n="role">Bếp Trưởng Điều Hành</div>
             </header>
 
             <section class="section">
-                <h2 class="section-title"><i class="fa-solid fa-utensils"></i> Kinh Nghiệm Làm Việc</h2>
+                <h2 class="section-title"><i class="fa-solid fa-utensils"></i> <span data-i18n="expTitle">Kinh Nghiệm Làm Việc</span></h2>
                 <div class="timeline">
                     
                     <div class="timeline-item">
                         <div class="item-header">
-                            <h3 class="item-title">Giảng Viên Đào Tạo Nghề Bếp</h3>
-                            <span class="item-date">2015 - Nay</span>
+                            <h3 class="item-title" data-i18n="exp1Title">Giảng Viên Đào Tạo Nghề Bếp</h3>
+                            <span class="item-date" data-i18n="exp1Date">2015 - Nay</span>
                         </div>
-                        <div class="item-subtitle">Trường Netspace & Các Tổ chức Phi Chính Phủ</div>
-                        <div class="item-desc">
+                        <div class="item-subtitle" data-i18n="exp1Sub">Trường Netspace & Các Tổ chức Phi Chính Phủ</div>
+                        <div class="item-desc" data-i18n="exp1Desc">
                             • Giảng dạy chuyên ngành Bếp Á & Âu tại trường Netspace.<br>
                             • Đào tạo nghề du lịch bếp tại Quảng Nam và Đà Nẵng cho các tổ chức phi chính phủ.
                         </div>
@@ -458,137 +475,136 @@
 
                     <div class="timeline-item">
                         <div class="item-header">
-                            <h3 class="item-title">Bếp Trưởng</h3>
-                            <span class="item-date">2015 - Nay</span>
+                            <h3 class="item-title" data-i18n="exp2Title">Bếp Trưởng</h3>
+                            <span class="item-date" data-i18n="exp2Date">2015 - Nay</span>
                         </div>
-                        <div class="item-subtitle">Khách sạn GRAND SEA, Đà Nẵng</div>
+                        <div class="item-subtitle" data-i18n="exp2Sub">Khách sạn GRAND SEA, Đà Nẵng</div>
                     </div>
 
                     <div class="timeline-item">
                         <div class="item-header">
-                            <h3 class="item-title">Đầu Bếp Chính (Khách Mời)</h3>
-                            <span class="item-date">Tháng 03 / 2018</span>
+                            <h3 class="item-title" data-i18n="exp3Title">Đầu Bếp Chính (Khách Mời)</h3>
+                            <span class="item-date" data-i18n="exp3Date">Tháng 03 / 2018</span>
                         </div>
-                        <div class="item-subtitle">Khách sạn Pan Pacific Sonargaon, Dhaka, Bangladesh</div>
-                        <div class="item-desc">
+                        <div class="item-subtitle" data-i18n="exp3Sub">Khách sạn Pan Pacific Sonargaon, Dhaka, Bangladesh</div>
+                        <div class="item-desc" data-i18n="exp3Desc">
                             Đại diện Ẩm thực Việt Nam. Được Đại sứ quán Việt Nam tại Bangladesh mời làm Đầu Bếp Chính trong chuỗi sự kiện kỷ niệm 45 năm thiết lập quan hệ ngoại giao hai nước nhằm giới thiệu và quảng bá ẩm thực truyền thống Việt Nam đến bạn bè quốc tế.
-                            <br>
                         </div>
                     </div>
 
                     <div class="timeline-item">
                         <div class="item-header">
-                            <h3 class="item-title">Bếp Trưởng</h3>
+                            <h3 class="item-title" data-i18n="exp4Title">Bếp Trưởng</h3>
                             <span class="item-date">2014 - 2015</span>
                         </div>
-                        <div class="item-subtitle">Khách sạn Sea Phoenix, Đà Nẵng</div>
+                        <div class="item-subtitle" data-i18n="exp4Sub">Khách sạn Sea Phoenix, Đà Nẵng</div>
                     </div>
 
                     <div class="timeline-item">
                         <div class="item-header">
-                            <h3 class="item-title">Bếp Trưởng</h3>
+                            <h3 class="item-title" data-i18n="exp5Title">Bếp Trưởng</h3>
                             <span class="item-date">2007 - 2014</span>
                         </div>
-                        <div class="item-subtitle">Khách sạn Vạn Lợi, Hội An</div>
+                        <div class="item-subtitle" data-i18n="exp5Sub">Khách sạn Vạn Lợi, Hội An</div>
                     </div>
 
                     <div class="timeline-item">
                         <div class="item-header">
-                            <h3 class="item-title">Bếp Trưởng</h3>
+                            <h3 class="item-title" data-i18n="exp6Title">Bếp Trưởng</h3>
                             <span class="item-date">2002 - 2004</span>
                         </div>
-                        <div class="item-subtitle">Đông An Beach Hotel, Hội An</div>
+                        <div class="item-subtitle" data-i18n="exp6Sub">Đông An Beach Hotel, Hội An</div>
                     </div>
 
                     <div class="timeline-item">
                         <div class="item-header">
-                            <h3 class="item-title">Bếp Phó</h3>
+                            <h3 class="item-title" data-i18n="exp7Title">Bếp Phó</h3>
                             <span class="item-date">2000 - 2002</span>
                         </div>
-                        <div class="item-subtitle">Nhà hàng BROTHER, Hội An (Cty TM & DL Hoài Phố)</div>
+                        <div class="item-subtitle" data-i18n="exp7Sub">Nhà hàng BROTHER, Hội An (Cty TM & DL Hoài Phố)</div>
                     </div>
 
                     <div class="timeline-item">
                         <div class="item-header">
-                            <h3 class="item-title">Bếp Trưởng</h3>
+                            <h3 class="item-title" data-i18n="exp8Title">Bếp Trưởng</h3>
                             <span class="item-date">1998 - 2000</span>
                         </div>
-                        <div class="item-subtitle">Khách sạn Royal (17 Quang Trung, Đà Nẵng)</div>
+                        <div class="item-subtitle" data-i18n="exp8Sub">Khách sạn Royal (17 Quang Trung, Đà Nẵng)</div>
                     </div>
 
                     <div class="timeline-item">
                         <div class="item-header">
-                            <h3 class="item-title">Bếp Phó</h3>
+                            <h3 class="item-title" data-i18n="exp9Title">Bếp Phó</h3>
                             <span class="item-date">1994 - 1998</span>
                         </div>
-                        <div class="item-subtitle">Nhà hàng Ý (142 Võ Thị Sáu, Q3, TP.HCM)</div>
+                        <div class="item-subtitle" data-i18n="exp9Sub">Nhà hàng Ý (142 Võ Thị Sáu, Q3, TP.HCM)</div>
                     </div>
 
                     <div class="timeline-item">
                         <div class="item-header">
-                            <h3 class="item-title">Nhân viên Bếp</h3>
+                            <h3 class="item-title" data-i18n="exp10Title">Nhân viên Bếp</h3>
                             <span class="item-date">1988 - 1994</span>
                         </div>
-                        <div class="item-subtitle">Khách sạn Modern (Cty Dịch vụ Du lịch Đà Nẵng)</div>
+                        <div class="item-subtitle" data-i18n="exp10Sub">Khách sạn Modern (Cty Dịch vụ Du lịch Đà Nẵng)</div>
                     </div>
 
                 </div>
             </section>
 
             <section class="section">
-                <h2 class="section-title"><i class="fa-solid fa-graduation-cap"></i> Học Vấn & Đào Tạo</h2>
+                <h2 class="section-title"><i class="fa-solid fa-graduation-cap"></i> <span data-i18n="eduTitle">Học Vấn & Đào Tạo</span></h2>
                 <div class="timeline">
                     
                     <div class="timeline-item">
                         <div class="item-header">
-                            <h3 class="item-title">Đại Học</h3>
+                            <h3 class="item-title" data-i18n="edu1Title">Đại Học</h3>
                             <span class="item-date">2004 - 2007</span>
                         </div>
-                        <div class="item-subtitle">Cử nhân Kinh tế tại TP. Hồ Chí Minh</div>
+                        <div class="item-subtitle" data-i18n="edu1Sub">Cử nhân Kinh tế tại TP. Hồ Chí Minh</div>
                     </div>
 
                     <div class="timeline-item">
                         <div class="item-header">
-                            <h3 class="item-title">Đào Tạo Chế Biến Thực Phẩm</h3>
+                            <h3 class="item-title" data-i18n="edu2Title">Đào Tạo Chế Biến Thực Phẩm</h3>
                             <span class="item-date">1994 - 1998</span>
                         </div>
                     </div>
 
                     <div class="timeline-item">
                         <div class="item-header">
-                            <h3 class="item-title">Đào Tạo Nấu Ăn</h3>
+                            <h3 class="item-title" data-i18n="edu3Title">Đào Tạo Nấu Ăn</h3>
                             <span class="item-date">1985 - 1988</span>
                         </div>
-                        <div class="item-subtitle">Khách sạn Non Nước</div>
+                        <div class="item-subtitle" data-i18n="edu3Sub">Khách sạn Non Nước</div>
                     </div>
 
                 </div>
             </section>
 
             <section class="section">
-                <h2 class="section-title"><i class="fa-solid fa-certificate"></i> Bằng Cấp Nổi Bật</h2>
+                <h2 class="section-title"><i class="fa-solid fa-certificate"></i> <span data-i18n="certTitle">Bằng Cấp Nổi Bật</span></h2>
                 <div class="cert-grid">
                     <div class="cert-item">
                         <i class="fa-solid fa-award"></i>
-                        <span>Tốt nghiệp Cao đẳng Sư phạm Nghề - Chuyên ngành Bếp (2015)</span>
+                        <span data-i18n="cert1">Tốt nghiệp Cao đẳng Sư phạm Nghề - Chuyên ngành Bếp (2015)</span>
                     </div>
                     <div class="cert-item">
                         <i class="fa-solid fa-award"></i>
-                        <span>Giấy chứng nhận đào tạo của chương trình VTOS (2015)</span>
+                        <span data-i18n="cert2">Giấy chứng nhận đào tạo của chương trình VTOS (2015)</span>
                     </div>
                     <div class="cert-item">
                         <i class="fa-solid fa-award"></i>
-                        <span>Giấy chứng nhận thi nấu ăn (2014)</span>
+                        <span data-i18n="cert3">Giấy chứng nhận thi nấu ăn (2014)</span>
                     </div>
                     <div class="cert-item">
                         <i class="fa-solid fa-award"></i>
-                        <span>Giấy chứng nhận chế biến thực phẩm (2000)</span>
+                        <span data-i18n="cert4">Giấy chứng nhận chế biến thực phẩm (2000)</span>
                     </div>
                 </div>
             </section>
 
             <section class="section" style="margin-bottom: 0;">
-                <h2 class="section-title"><i class="fa-solid fa-camera-retro"></i> Hình Ảnh & Chứng Chỉ</h2>
+                <h2 class="section-title"><i class="fa-solid fa-camera-retro"></i> <span data-i18n="galleryTitle">Hình Ảnh & Chứng Chỉ</span></h2>
                 <div class="gallery">
                     <img src="nauan.jpg" alt="Hoạt động nấu ăn 1">
                     <img src="naucom.jpg" alt="Hoạt động nấu ăn 2">
@@ -605,6 +621,139 @@
         <img class="lightbox-content" id="lightbox-img">
     </div>
 
+    <!-- Translation Script -->
+    <script>
+        const i18n = {
+            vi: {
+                contactTitle: "Liên Hệ",
+                address: "K58/6 Cô Bắc, TP. Đà Nẵng",
+                skillsTitle: "Kỹ Năng Chuyên Môn",
+                skill1: "Giám sát, hướng dẫn sử dụng thiết bị và quy trình an toàn vệ sinh thực phẩm.",
+                skill2: "Đảm bảo thiết bị nhà bếp vận hành đúng tiêu chuẩn.",
+                skill3: "<strong>Bếp Âu:</strong> Chuyên các món ăn Ý.",
+                skill4: "<strong>Bếp Á:</strong> Ẩm thực Việt Nam và Trung Quốc.",
+                skill5: "<strong>Bếp Bánh:</strong> Các loại bánh buffet sáng (đặc biệt Pizza).",
+                skill6: "<strong>Bếp Nhật Bản:</strong> Một số món ăn thuần túy.",
+                skill7: "<strong>Bếp Pháp:</strong> Ẩm thực cơ bản.",
+                personalSkillsTitle: "Kỹ Năng Cá Nhân",
+                pskill1: "Tổ chức xuất sắc các tiệc Buffet, tiệc ngoài trời, sinh nhật, đám cưới.",
+                pskill2: "Luôn mong muốn học hỏi, sáng tạo và làm việc chăm chỉ.",
+                pskill3: "Cẩn thận, tỉ mỉ trong khâu chế biến thực phẩm.",
+                name: "Trần Thanh Sơn",
+                role: "Bếp Trưởng Điều Hành",
+                expTitle: "Kinh Nghiệm Làm Việc",
+                exp1Title: "Giảng Viên Đào Tạo Nghề Bếp",
+                exp1Date: "2015 - Nay",
+                exp1Sub: "Trường Netspace & Các Tổ chức Phi Chính Phủ",
+                exp1Desc: "• Giảng dạy chuyên ngành Bếp Á & Âu tại trường Netspace.<br>• Đào tạo nghề du lịch bếp tại Quảng Nam và Đà Nẵng cho các tổ chức phi chính phủ.",
+                exp2Title: "Bếp Trưởng",
+                exp2Date: "2015 - Nay",
+                exp2Sub: "Khách sạn GRAND SEA, Đà Nẵng",
+                exp3Title: "Đầu Bếp Chính (Khách Mời)",
+                exp3Date: "Tháng 03 / 2018",
+                exp3Sub: "Khách sạn Pan Pacific Sonargaon, Dhaka, Bangladesh",
+                exp3Desc: "Đại diện Ẩm thực Việt Nam. Được Đại sứ quán Việt Nam tại Bangladesh mời làm Đầu Bếp Chính trong chuỗi sự kiện kỷ niệm 45 năm thiết lập quan hệ ngoại giao hai nước nhằm giới thiệu và quảng bá ẩm thực truyền thống Việt Nam đến bạn bè quốc tế.",
+                exp4Title: "Bếp Trưởng",
+                exp4Sub: "Khách sạn Sea Phoenix, Đà Nẵng",
+                exp5Title: "Bếp Trưởng",
+                exp5Sub: "Khách sạn Vạn Lợi, Hội An",
+                exp6Title: "Bếp Trưởng",
+                exp6Sub: "Đông An Beach Hotel, Hội An",
+                exp7Title: "Bếp Phó",
+                exp7Sub: "Nhà hàng BROTHER, Hội An (Cty TM & DL Hoài Phố)",
+                exp8Title: "Bếp Trưởng",
+                exp8Sub: "Khách sạn Royal (17 Quang Trung, Đà Nẵng)",
+                exp9Title: "Bếp Phó",
+                exp9Sub: "Nhà hàng Ý (142 Võ Thị Sáu, Q3, TP.HCM)",
+                exp10Title: "Nhân viên Bếp",
+                exp10Sub: "Khách sạn Modern (Cty Dịch vụ Du lịch Đà Nẵng)",
+                eduTitle: "Học Vấn & Đào Tạo",
+                edu1Title: "Đại Học",
+                edu1Sub: "Cử nhân Kinh tế tại TP. Hồ Chí Minh",
+                edu2Title: "Đào Tạo Chế Biến Thực Phẩm",
+                edu3Title: "Đào Tạo Nấu Ăn",
+                edu3Sub: "Khách sạn Non Nước",
+                certTitle: "Bằng Cấp Nổi Bật",
+                cert1: "Tốt nghiệp Cao đẳng Sư phạm Nghề - Chuyên ngành Bếp (2015)",
+                cert2: "Giấy chứng nhận đào tạo của chương trình VTOS (2015)",
+                cert3: "Giấy chứng nhận thi nấu ăn (2014)",
+                cert4: "Giấy chứng nhận chế biến thực phẩm (2000)",
+                galleryTitle: "Hình Ảnh & Chứng Chỉ"
+            },
+            en: {
+                contactTitle: "Contact",
+                address: "K58/6 Co Bac, Da Nang City",
+                skillsTitle: "Professional Skills",
+                skill1: "Supervising and instructing the use of kitchen equipment and food safety procedures.",
+                skill2: "Ensuring all kitchen operations meet standard requirements.",
+                skill3: "<strong>Western Cuisine:</strong> Specialized in Italian dishes.",
+                skill4: "<strong>Asian Cuisine:</strong> Authentic Vietnamese and Chinese cuisine.",
+                skill5: "<strong>Pastry:</strong> Breakfast buffet pastries, specializing in Pizza.",
+                skill6: "<strong>Japanese Cuisine:</strong> Traditional dishes.",
+                skill7: "<strong>French Cuisine:</strong> Basic culinary techniques.",
+                personalSkillsTitle: "Personal Skills",
+                pskill1: "Excellent organization of Buffets, outdoor events, birthdays, and weddings.",
+                pskill2: "Eager to learn, highly creative, and hardworking.",
+                pskill3: "Careful and meticulous in food preparation.",
+                name: "Tran Thanh Son",
+                role: "Executive Chef",
+                expTitle: "Work Experience",
+                exp1Title: "Culinary Training Instructor",
+                exp1Date: "2015 - Present",
+                exp1Sub: "Netspace Culinary Arts School & NGOs",
+                exp1Desc: "• Teaching Asian & Western Culinary Arts at Netspace.<br>• Providing vocational culinary training in Quang Nam and Da Nang for Non-Governmental Organizations.",
+                exp2Title: "Executive Chef",
+                exp2Date: "2015 - Present",
+                exp2Sub: "GRAND SEA Hotel, Da Nang",
+                exp3Title: "Guest Principal Chef",
+                exp3Date: "March 2018",
+                exp3Sub: "Pan Pacific Sonargaon Hotel, Dhaka, Bangladesh",
+                exp3Desc: "Representing Vietnamese Cuisine. Invited by the Vietnamese Embassy in Bangladesh to serve as Principal Chef during events celebrating the 45th anniversary of diplomatic relations, promoting traditional Vietnamese cuisine to international delegates.",
+                exp4Title: "Executive Chef",
+                exp4Sub: "Sea Phoenix Hotel, Da Nang",
+                exp5Title: "Executive Chef",
+                exp5Sub: "Van Loi Hotel, Hoi An",
+                exp6Title: "Executive Chef",
+                exp6Sub: "Dong An Beach Hotel, Hoi An",
+                exp7Title: "Sous Chef",
+                exp7Sub: "BROTHER Restaurant, Hoi An (Hoai Pho Trading & Tourism Co.)",
+                exp8Title: "Executive Chef",
+                exp8Sub: "Royal Hotel (17 Quang Trung, Da Nang)",
+                exp9Title: "Sous Chef",
+                exp9Sub: "Italian Restaurant (142 Vo Thi Sau, D3, HCMC)",
+                exp10Title: "Kitchen Staff",
+                exp10Sub: "Modern Hotel (Da Nang Tourism Service Co.)",
+                eduTitle: "Education & Training",
+                edu1Title: "University",
+                edu1Sub: "Bachelor of Economics in Ho Chi Minh City",
+                edu2Title: "Food Processing Training",
+                edu3Title: "Culinary Training",
+                edu3Sub: "Non Nuoc Hotel",
+                certTitle: "Outstanding Certifications",
+                cert1: "Graduated from Vocational College - Culinary Arts Major (2015)",
+                cert2: "VTOS Program Training Certificate (2015)",
+                cert3: "Cooking Competition Certificate (2014)",
+                cert4: "Food Processing Certificate (2000)",
+                galleryTitle: "Gallery & Certificates"
+            }
+        };
+
+        function setLang(lang) {
+            // Update active button styling
+            document.querySelectorAll('.lang-switch button').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('btn-' + lang).classList.add('active');
+            
+            // Replace text for all elements with data-i18n attribute
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if(i18n[lang] && i18n[lang][key]) {
+                    el.innerHTML = i18n[lang][key];
+                }
+            });
+        }
+    </script>
+
+    <!-- Lightbox Script -->
     <script>
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
