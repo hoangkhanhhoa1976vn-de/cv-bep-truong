@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trần Thanh Son - Executive Chef</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #e4e7ec;
+            --sidebar-bg: #1c232c;
+            --sidebar-text: #e0e5e9;
+            --main-bg: #ffffff;
+            --text-primary: #1a1f24;
+            --text-secondary: #5e6d7a;
+            --accent: #c49a45; /* Luxurious Gold */
+            --accent-hover: #dfb256;
+            --border: #eaedf1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            padding: 50px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .resume-wrapper {
+            display: flex;
+            width: 100%;
+            max-width: 1100px;
+            background: var(--main-bg);
+            border-radius: 16px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            width: 32%;
+            background: var(--sidebar-bg);
+            color: var(--sidebar-text);
+            padding: 60px 40px;
+            position: relative;
+        }
+
+        .profile-container {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .profile-img {
+            width: 190px;
+            height: 190px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--sidebar-bg);
+            outline: 3px solid var(--accent);
+            outline-offset: 4px;
+            margin-bottom: 30px;
+            transition: all 0.4s ease;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05);
+            outline-offset: 8px;
+        }
+
+        .sidebar h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--accent);
+            font-size: 22px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 12px;
+        }
+
+        .contact-list, .skills-list {
+            list-style: none;
+            margin-bottom: 45px;
+        }
+
+        .contact-list li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 14.5px;
+            font-weight: 300;
+        }
+
+        .contact-list i {
+            width: 35px;
+            font-size: 18px;
+            color: var(--accent);
+        }
+
+        .skills-list li {
+            position: relative;
+            padding-left: 24px;
+            margin-bottom: 16px;
+            font-size: 14.5px;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        .skills-list li::before {
+            content: "\f111";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            font-size: 6px;
+            position: absolute;
+            left: 0;
+            top: 9px;
+            color: var(--accent);
+        }
+
+        .skills-list strong {
+            color: #fff;
+            font-weight: 500;
+        }
+
+        /* MAIN CONTENT */
+        .main-content {
+            width: 68%;
+            padding: 70px 60px;
+        }
+
+        .header {
+            margin-bottom: 60px;
+        }
+
+        .name {
+            font-family: 'Playfair Display', serif;
+            font-size: 52px;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.1;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .title {
+            font-size: 20px;
+            font-weight: 400;
+            color: var(--accent);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            color: var(--text-primary);
+            margin-bottom: 35px;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-title i {
+            color: var(--accent);
+            margin-right: 15px;
+            font-size: 24px;
+        }
+
+        /* TIMELINE */
+        .timeline {
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 5px;
+            bottom: 0;
+            width: 1px;
+            background: var(--border);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 40px;
+            margin-bottom: 35px;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 7px;
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 0 4px rgba(196, 154, 69, 0.15);
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 5px;
+        }
+
+        .item-title {
+            font-size: 19px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .item-date {
+            font-size: 13.5px;
+            font-weight: 600;
+            color: var(--accent);
+            background: rgba(196, 154, 69, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+
+        .item-subtitle {
+            font-size: 15px;
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-bottom: 12px;
+        }
+
+        .item-desc {
+            font-size: 15px;
+            color: var(--text-secondary);
+            text-align: justify;
+        }
+
+        .cert-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .cert-item {
+            display: flex;
+            align-items: flex-start;
+            font-size: 15px;
+            color: var(--text-secondary);
+        }
+
+        .cert-item i {
+            color: var(--accent);
+            margin-top: 4px;
+            margin-right: 12px;
+            font-size: 18px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .gallery img.cert-img {
+            grid-column: span 2;
+            height: auto;
+            max-height: 400px;
+            object-fit: contain;
+            background: transparent;
+            box-shadow: none;
+            border: 1px solid var(--border);
+            padding: 10px;
+        }
+
+        .gallery img:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: var(--accent);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: background 0.3s ease;
+        }
+
+        .btn:hover {
+            background: var(--accent-hover);
+        }
+
+        .btn i {
+            margin-right: 8px;
+        }
+
+        @media (max-width: 992px) {
+            .resume-wrapper {
+                flex-direction: column;
+            }
+            .sidebar, .main-content {
+                width: 100%;
+                padding: 40px 30px;
+            }
+            .cert-grid {
+                grid-template-columns: 1fr;
+            }
+            .item-header {
+                flex-direction: column;
+                justify-content: flex-start;
+            }
+            .item-date {
+                margin-top: 5px;
+                display: inline-block;
+                width: fit-content;
+            }
+        }
+
+        /* LIGHTBOX CSS */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .lightbox.show {
+            display: flex;
+            opacity: 1;
+        }
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90vh;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            animation: zoomIn 0.3s ease;
+        }
+        @keyframes zoomIn {
+            from {transform: scale(0.95);}
+            to {transform: scale(1);}
+        }
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: 300;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .close-btn:hover {
+            color: var(--accent);
+        }
+        .gallery img, .profile-img {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="resume-wrapper">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="profile-container">
+                <img src="nauan.jpg" alt="Trần Thanh Son" class="profile-img">
+            </div>
+
+            <h2>Liên Hệ</h2>
+            <ul class="contact-list">
+                <li><i class="fa-regular fa-calendar"></i> 06 / 11 / 1966</li>
+                <li><i class="fa-solid fa-phone"></i> 0909 000 383</li>
+                <li><i class="fa-regular fa-envelope"></i> Thanhsontran611@gmail.com</li>
+                <li><i class="fa-solid fa-location-dot"></i> K58/6 Cô Bắc, TP. Đà Nẵng</li>
+            </ul>
+
+            <h2>Kỹ Năng Chuyên Môn</h2>
+            <ul class="skills-list">
+                <li>Giám sát, hướng dẫn sử dụng thiết bị và quy trình an toàn vệ sinh thực phẩm.</li>
+                <li>Đảm bảo thiết bị nhà bếp vận hành đúng tiêu chuẩn.</li>
+                <li><strong>Bếp Âu:</strong> Chuyên các món ăn Ý.</li>
+                <li><strong>Bếp Á:</strong> Ẩm thực Việt Nam và Trung Quốc.</li>
+                <li><strong>Bếp Bánh:</strong> Các loại bánh buffet sáng (đặc biệt Pizza).</li>
+                <li><strong>Bếp Nhật Bản:</strong> Một số món ăn thuần túy.</li>
+                <li><strong>Bếp Pháp:</strong> Ẩm thực cơ bản.</li>
+            </ul>
+
+            <h2>Kỹ Năng Cá Nhân</h2>
+            <ul class="skills-list">
+                <li>Tổ chức xuất sắc các tiệc Buffet, tiệc ngoài trời, sinh nhật, đám cưới.</li>
+                <li>Luôn mong muốn học hỏi, sáng tạo và làm việc chăm chỉ.</li>
+                <li>Cẩn thận, tỉ mỉ trong khâu chế biến thực phẩm.</li>
+            </ul>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+            <header class="header">
+                <h1 class="name">Trần Thanh Sơn</h1>
+                <div class="title">Bếp Trưởng Điều Hành</div>
+            </header>
+
+            <section class="section">
+                <h2 class="section-title"><i class="fa-solid fa-utensils"></i> Kinh Nghiệm Làm Việc</h2>
+                <div class="timeline">
+                    
+                    <div class="timeline-item">
+                        <div class="item-header">
+                            <h3 class="item-title">Giảng Viên Đào Tạo Nghề Bếp</h3>
+                            <span class="item-date">2015 - Nay</span>
+                        </div>
+                        <div class="item-subtitle">Trường Netspace & Các Tổ chức Phi Chính Phủ</div>
+                        <div class="item-desc">
+                            • Giảng dạy chuyên ngành Bếp Á & Âu tại trường Netspace.<br>
+                            • Đào tạo nghề du lịch bếp tại Quảng Nam và Đà Nẵng cho các tổ chức phi chính phủ.
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="item-header">
+                            <h3 class="item-title">Bếp Trưởng</h3>
+                            <span class="item-date">2015 - Nay</span>
+                        </div>
+                        <div class="item-subtitle">Khách sạn GRAND SEA, Đà Nẵng</div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="item-header">
+                            <h3 class="item-title">Đầu Bếp Chính (Khách Mời)</h3>
+                            <span class="item-date">Tháng 03 / 2018</span>
+                        </div>
+                        <div class="item-subtitle">Khách sạn Pan Pacific Sonargaon, Dhaka, Bangladesh</div>
+                        <div class="item-desc">
+                            Đại diện Ẩm thực Việt Nam. Được Đại sứ quán Việt Nam tại Bangladesh mời làm Đầu Bếp Chính trong chuỗi sự kiện kỷ niệm 45 năm thiết lập quan hệ ngoại giao hai nước nhằm giới thiệu và quảng bá ẩm thực truyền thống Việt Nam đến bạn bè quốc tế.
+                            <br>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="item-header">
+                            <h3 class="item-title">Bếp Trưởng</h3>
+                            <span class="item-date">2014 - 2015</span>
+                        </div>
+                        <div class="item-subtitle">Khách sạn Sea Phoenix, Đà Nẵng</div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="item-header">
+                            <h3 class="item-title">Bếp Trưởng</h3>
+                            <span class="item-date">2007 - 2014</span>
+                        </div>
+                        <div class="item-subtitle">Khách sạn Vạn Lợi, Hội An</div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="item-header">
+                            <h3 class="item-title">Bếp Trưởng</h3>
+                            <span class="item-date">2002 - 2004</span>
+                        </div>
+                        <div class="item-subtitle">Đông An Beach Hotel, Hội An</div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="item-header">
+                            <h3 class="item-title">Bếp Phó</h3>
+                            <span class="item-date">2000 - 2002</span>
+                        </div>
+                        <div class="item-subtitle">Nhà hàng BROTHER, Hội An (Cty TM & DL Hoài Phố)</div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="item-header">
+                            <h3 class="item-title">Bếp Trưởng</h3>
+                            <span class="item-date">1998 - 2000</span>
+                        </div>
+                        <div class="item-subtitle">Khách sạn Royal (17 Quang Trung, Đà Nẵng)</div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="item-header">
+                            <h3 class="item-title">Bếp Phó</h3>
+                            <span class="item-date">1994 - 1998</span>
+                        </div>
+                        <div class="item-subtitle">Nhà hàng Ý (142 Võ Thị Sáu, Q3, TP.HCM)</div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="item-header">
+                            <h3 class="item-title">Nhân viên Bếp</h3>
+                            <span class="item-date">1988 - 1994</span>
+                        </div>
+                        <div class="item-subtitle">Khách sạn Modern (Cty Dịch vụ Du lịch Đà Nẵng)</div>
+                    </div>
+
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title"><i class="fa-solid fa-graduation-cap"></i> Học Vấn & Đào Tạo</h2>
+                <div class="timeline">
+                    
+                    <div class="timeline-item">
+                        <div class="item-header">
+                            <h3 class="item-title">Đại Học</h3>
+                            <span class="item-date">2004 - 2007</span>
+                        </div>
+                        <div class="item-subtitle">Cử nhân Kinh tế tại TP. Hồ Chí Minh</div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="item-header">
+                            <h3 class="item-title">Đào Tạo Chế Biến Thực Phẩm</h3>
+                            <span class="item-date">1994 - 1998</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="item-header">
+                            <h3 class="item-title">Đào Tạo Nấu Ăn</h3>
+                            <span class="item-date">1985 - 1988</span>
+                        </div>
+                        <div class="item-subtitle">Khách sạn Non Nước</div>
+                    </div>
+
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title"><i class="fa-solid fa-certificate"></i> Bằng Cấp Nổi Bật</h2>
+                <div class="cert-grid">
+                    <div class="cert-item">
+                        <i class="fa-solid fa-award"></i>
+                        <span>Tốt nghiệp Cao đẳng Sư phạm Nghề - Chuyên ngành Bếp (2015)</span>
+                    </div>
+                    <div class="cert-item">
+                        <i class="fa-solid fa-award"></i>
+                        <span>Giấy chứng nhận đào tạo của chương trình VTOS (2015)</span>
+                    </div>
+                    <div class="cert-item">
+                        <i class="fa-solid fa-award"></i>
+                        <span>Giấy chứng nhận thi nấu ăn (2014)</span>
+                    </div>
+                    <div class="cert-item">
+                        <i class="fa-solid fa-award"></i>
+                        <span>Giấy chứng nhận chế biến thực phẩm (2000)</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section" style="margin-bottom: 0;">
+                <h2 class="section-title"><i class="fa-solid fa-camera-retro"></i> Hình Ảnh & Chứng Chỉ</h2>
+                <div class="gallery">
+                    <img src="nauan.jpg" alt="Hoạt động nấu ăn 1">
+                    <img src="naucom.jpg" alt="Hoạt động nấu ăn 2">
+                    <img src="giaychungnhan.jpg" alt="Giấy chứng nhận" class="cert-img">
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+        <span class="close-btn" onclick="closeLightbox()">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
+
+    <script>
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const images = document.querySelectorAll('.gallery img, .profile-img');
+
+        images.forEach(img => {
+            img.addEventListener('click', () => {
+                lightboxImg.src = img.src;
+                lightbox.classList.add('show');
+            });
+        });
+
+        function closeLightbox() {
+            lightbox.classList.remove('show');
+        }
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target !== lightboxImg) {
+                closeLightbox();
+            }
+        });
+    </script>
+</body>
+</html>
